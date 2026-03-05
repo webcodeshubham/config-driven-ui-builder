@@ -58,3 +58,13 @@
 .fullWidth {
   width: 100%;
 }
+
+/* ---- Touch-friendly mobile sizing ---- */
+@media (max-width: 480px) {
+  .button {
+    padding: 12px 20px;
+    font-size: 0.9375rem;
+    min-height: 44px;            /* Apple HIG minimum touch target */
+    border-radius: 10px;
+  }
+}

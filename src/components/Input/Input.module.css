@@ -25,6 +25,7 @@
   background: var(--color-surface-alt);
   color: var(--color-text);
   outline: none;
+  width: 100%;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
@@ -51,4 +52,20 @@
 .hint {
   font-size: 0.8125rem;
   color: var(--color-text-muted);
+}
+
+/* ---- Touch-friendly mobile sizing ---- */
+@media (max-width: 480px) {
+  .field {
+    margin-bottom: 12px;
+  }
+
+  .input {
+    padding: 12px 14px;
+    font-size: 1rem;             /* 16px prevents iOS zoom */
+  }
+
+  .label {
+    font-size: 0.8125rem;
+  }
 }

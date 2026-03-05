@@ -78,6 +78,7 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -94,9 +95,17 @@ body {
   color: var(--color-text);
   background: var(--color-bg);
   min-height: 100vh;
+  min-height: 100dvh;
   transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
 }
 
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* ---- Responsive base typography ---- */
+@media (max-width: 480px) {
+  html { font-size: 15px; }
 }

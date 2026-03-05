@@ -8,6 +8,11 @@
   flex-wrap: wrap;
 }
 
+.row > * {
+  flex: 1 1 0%;
+  min-width: 140px;
+}
+
 .column {
   flex-direction: column;
 }
@@ -23,3 +28,19 @@
 .gap16 { gap: 16px; }
 .gap24 { gap: 24px; }
 .gap32 { gap: 32px; }
+
+/* ---- Responsive: collapse grid to single column on small screens ---- */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .row > * {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+}

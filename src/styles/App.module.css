@@ -4,6 +4,7 @@
   align-items: center;
   padding: 40px 20px;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .header {
@@ -29,6 +30,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 32px;
+  max-width: 100%;
 }
 
 .tabBar {
@@ -37,6 +39,14 @@
   padding: 4px;
   background: var(--color-tab-bg);
   border-radius: 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;        /* Firefox */
+  min-width: 0;                 /* allow flex shrink inside topBar */
+}
+
+.tabBar::-webkit-scrollbar {
+  display: none;                /* Chrome / Safari */
 }
 
 .tab {
@@ -50,6 +60,8 @@
   background: transparent;
   color: var(--color-text-subtle);
   transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tab:hover {
@@ -98,6 +110,8 @@
   font-family: 'Fira Code', 'JetBrains Mono', monospace;
   overflow-x: auto;
   line-height: 1.7;
+  word-break: break-word;
+  white-space: pre-wrap;
 }
 
 .themeToggle {
@@ -119,4 +133,117 @@
 .themeToggle:hover {
   border-color: var(--color-accent);
   color: var(--color-accent);
+}
+
+/* ============================
+   Tablet  (≤ 768px)
+   ============================ */
+@media (max-width: 768px) {
+  .app {
+    padding: 28px 16px;
+  }
+
+  .header {
+    margin-bottom: 24px;
+  }
+
+  .title {
+    font-size: 1.65rem;
+  }
+
+  .subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .topBar {
+    margin-bottom: 24px;
+  }
+
+  .card {
+    padding: 24px;
+    border-radius: 14px;
+  }
+
+  .outputPre {
+    padding: 16px;
+    font-size: 0.775rem;
+  }
+}
+
+/* ============================
+   Mobile  (≤ 480px)
+   ============================ */
+@media (max-width: 480px) {
+  .app {
+    padding: 20px 12px;
+  }
+
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .subtitle {
+    font-size: 0.875rem;
+  }
+
+  .topBar {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tabBar {
+    border-radius: 10px;
+  }
+
+  .tab {
+    padding: 7px 14px;
+    font-size: 0.8125rem;
+  }
+
+  .themeToggle {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+
+  .card {
+    padding: 18px 14px;
+    border-radius: 12px;
+  }
+
+  .output {
+    margin-top: 16px;
+  }
+
+  .outputPre {
+    padding: 14px 12px;
+    font-size: 0.75rem;
+    border-radius: 10px;
+  }
+}
+
+/* ============================
+   Small mobile  (≤ 360px)
+   ============================ */
+@media (max-width: 360px) {
+  .app {
+    padding: 16px 8px;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .tab {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .card {
+    padding: 14px 10px;
+  }
 }

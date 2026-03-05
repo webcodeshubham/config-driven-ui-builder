@@ -11,6 +11,7 @@
   margin-top: 2px;
   accent-color: var(--color-accent);
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .label {
@@ -29,4 +30,22 @@
 .wrapper {
   display: flex;
   flex-direction: column;
+}
+
+/* ---- Touch-friendly mobile sizing ---- */
+@media (max-width: 480px) {
+  .field {
+    margin-bottom: 12px;
+    gap: 10px;
+    padding: 4px 0;            /* bigger hit-area */
+  }
+
+  .checkbox {
+    width: 20px;
+    height: 20px;
+  }
+
+  .label {
+    font-size: 0.875rem;
+  }
 }

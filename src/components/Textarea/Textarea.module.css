@@ -26,6 +26,7 @@
   color: var(--color-text);
   outline: none;
   resize: vertical;
+  width: 100%;
   min-height: 80px;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
@@ -43,4 +44,21 @@
 .error {
   font-size: 0.8125rem;
   color: var(--color-error);
+}
+
+/* ---- Touch-friendly mobile sizing ---- */
+@media (max-width: 480px) {
+  .field {
+    margin-bottom: 12px;
+  }
+
+  .textarea {
+    padding: 12px 14px;
+    font-size: 1rem;
+    min-height: 72px;
+  }
+
+  .label {
+    font-size: 0.8125rem;
+  }
 }

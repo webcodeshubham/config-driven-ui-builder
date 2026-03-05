@@ -24,3 +24,30 @@
   gap: 12px;
   margin-top: 8px;
 }
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .description {
+    font-size: 0.875rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 0.8125rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
