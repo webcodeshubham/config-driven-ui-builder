@@ -1,65 +1,65 @@
-# Config-Driven UI Builder — Complete Hinglish Study Guide
+# Config-Driven UI Builder — Complete Study Guide
 
-> **Interview ke liye basic se advanced tak poori tayyari — Hinglish mein.**
+> **Full preparation from basics to advanced — for interviews and deep understanding.**
 
 ---
 
 ## Table of Contents
 
-1. [Project Kya Hai?](#1-project-kya-hai)
-2. [Kyun Banaya Ye Project?](#2-kyun-banaya-ye-project)
+1. [What Is This Project?](#1-what-is-this-project)
+2. [Why Was This Project Built?](#2-why-was-this-project-built)
 3. [Tech Stack](#3-tech-stack)
 4. [Quick Start](#4-quick-start)
-5. [Features Ka Overview](#5-features-ka-overview)
-6. [Architecture — 5 Layers Samjho](#6-architecture--5-layers-samjho)
+5. [Features Overview](#5-features-overview)
+6. [Architecture — 5 Layers Explained](#6-architecture--5-layers-explained)
 7. [Folder Structure Explained](#7-folder-structure-explained)
 8. [Data Flow — Step by Step](#8-data-flow--step-by-step)
-9. [Har File Ka Code Walkthrough](#9-har-file-ka-code-walkthrough)
-10. [Teen Demo Schemas Samjho](#10-teen-demo-schemas-samjho)
+9. [Code Walkthrough for Every File](#9-code-walkthrough-for-every-file)
+10. [Three Demo Schemas Explained](#10-three-demo-schemas-explained)
 11. [Theme System (Light/Dark Mode)](#11-theme-system-lightdark-mode)
 12. [Performance Optimizations](#12-performance-optimizations)
-13. [Kaise Extend Karein?](#13-kaise-extend-karein)
+13. [How to Extend?](#13-how-to-extend)
 14. [Interview Questions & Answers](#14-interview-questions--answers)
-15. [Real-World Mein Kahan Use Hota Hai?](#15-real-world-mein-kahan-use-hota-hai)
+15. [Where Is This Used in the Real World?](#15-where-is-this-used-in-the-real-world)
 
 ---
 
-## 1. Project Kya Hai?
+## 1. What Is This Project?
 
-Ye ek **React application** hai jo **JSON configuration se poora UI dynamically generate** karti hai. Koi bhi form, field, layout, ya button hardcoded nahi hai — sab kuch ek JSON schema se runtime pe banta hai.
+This is a **React application** that **dynamically generates an entire UI from JSON configuration**. No form, field, layout, or button is hardcoded — everything is built at runtime from a JSON schema.
 
-**Simple bhasha mein:**
+**In simple terms:**
 
 ```
-Traditional tarika:  Developer JSX likhta hai  →  React render karta hai
-Config-driven:       JSON describe karta hai   →  Engine decide karta hai  →  React render karta hai
+Traditional approach:  Developer writes JSX        →  React renders it
+Config-driven:         JSON describes the UI       →  Engine decides what to render  →  React renders it
 ```
 
-Socho ek **restaurant** hai:
+Think of it like a **restaurant**:
 | Concept | Restaurant Analogy |
 |---|---|
-| **JSON Schema** | Menu card — "mujhe ye chahiye" |
-| **Schema Parser** | Waiter — order padh ke samajhta hai |
-| **Render Engine** | Kitchen manager — har dish sahi chef ko assign karta hai |
-| **Component Registry** | Chefs ki list — "pizza = Chef A, pasta = Chef B" |
-| **Components (Input, Select, etc.)** | Individual chefs — apna dish banate hain |
-| **Final Form** | Plate mein ready dish customer ke saamne |
+| **JSON Schema** | Menu card — "this is what I want" |
+| **Schema Parser** | Waiter — reads the order and understands it |
+| **Render Engine** | Kitchen manager — assigns each dish to the right chef |
+| **Component Registry** | List of chefs — "pizza = Chef A, pasta = Chef B" |
+| **Components (Input, Select, etc.)** | Individual chefs — each prepares their own dish |
+| **Final Form** | The finished dish served on a plate to the customer |
 
-Aap bas **menu card (JSON) likhte ho**. Kitchen (engine) apne aap sab kuch bana deta hai.
+You just write the **menu card (JSON)**. The kitchen (engine) automatically prepares everything.
 
 ---
 
-## 2. Kyun Banaya Ye Project?
+## 2. Why Was This Project Built?
 
-Modern companies (Shopify, Salesforce, Retool, Google Forms) har form manually code nahi karti. Woh ek **rendering engine** banate hain, aur phir product team bas JSON schema likhti hai — "yahan input chahiye, yahan dropdown, yahan checkbox" — aur UI automatically ban jaata hai.
+Modern companies (Shopify, Salesforce, Retool, Google Forms) don't manually code every form. They build a **rendering engine**, and then the product team simply writes a JSON schema — "put an input here, a dropdown there, a checkbox here" — and the UI is automatically generated.
 
-**Is project ke fayde:**
+**Benefits of this project:**
 
-1. **Scalability** — Naya field type add karna ho? Bas component banao, registry mein register karo. Engine code touch karne ki zaroorat nahi.
-2. **Separation of Concerns** — Product managers decide karte hain *kya* dikhana hai (JSON). Frontend engineers decide karte hain *kaise* dikhana hai (components).
-3. **Server-Driven UI** — JSON schema API se aa sakta hai. Backend change kare, frontend ka UI badal jaye — bina frontend deploy kiye.
-4. **Consistency** — Saare forms same renderer use karte hain. Styling, validation, accessibility — sab uniform hai.
-5. **Testability** — JSON object test karna React component tree test karne se kaafi aasan hai.
+1. **Scalability** — Need to add a new field type? Just create a component and register it. No need to touch the engine code.
+2. **Separation of Concerns** — Product managers decide *what* to show (JSON). Frontend engineers decide *how* to show it (components).
+3. **Server-Driven UI** — The JSON schema can come from an API. The backend changes, the frontend UI updates — without redeploying the frontend.
+4. **Consistency** — All forms use the same renderer. Styling, validation, accessibility — everything is uniform.
+5. **Testability** — Testing a JSON object is much easier than testing a React component tree.
 
 ---
 
@@ -72,52 +72,54 @@ Modern companies (Shopify, Salesforce, Retool, Google Forms) har form manually c
 | Language | JavaScript ES6+ |
 | State Management | Context API + useReducer |
 | Styling | CSS Modules + CSS Custom Properties (theming) |
-| UI Frameworks | None (sab haath se banaya) |
+| UI Frameworks | None (everything built from scratch) |
 
 ---
 
 ## 4. Quick Start
 
 ```bash
-# dependencies install karo
+# Install dependencies
 npm install
 
-# dev server start karo
+# Start the dev server
 npm run dev
 
-# production build banao
+# Create a production build
 npm run build
 
-# production build preview karo
+# Preview the production build
 npm run preview
 ```
 
 ---
 
-## 5. Features Ka Overview
+## 5. Features Overview
 
-- **Dynamic UI Rendering** — poora interface JSON se generate hota hai
-- **Recursive Renderer** — kitni bhi depth ka nested schema handle karta hai
-- **Component Registry** — type string ko React component se map karta hai (runtime pe extensible)
-- **Conditional Rendering Engine** — `showIf` / `hideIf` ke saath AND/OR/equality/includes operators
+- **Dynamic UI Rendering** — The entire interface is generated from JSON
+- **Recursive Renderer** — Handles schemas of any nesting depth
+- **Component Registry** — Maps type strings to React components (extensible at runtime)
+- **Conditional Rendering Engine** — `showIf` / `hideIf` with AND/OR/equality/includes operators
 - **Validation Engine** — required, email, minLength, maxLength, pattern, cross-field match, custom validators
-- **Nested Layout System** — row, column, aur CSS grid layouts jo schemas ke andar composable hain
-- **Theme System** — Light/Dark mode with system preference detection aur localStorage persistence
-- **Performance Optimized** — React.memo, useMemo, useCallback sochsamajh ke lagaye hain
+- **Nested Layout System** — Row, column, and CSS grid layouts that are composable within schemas
+- **Theme System** — Light/Dark mode with system preference detection and localStorage persistence
+- **Fully Responsive** — Adapts seamlessly across desktop, tablet, and mobile with touch-friendly controls
+- **Performance Optimized** — React.memo, useMemo, useCallback applied thoughtfully throughout
 
 ---
 
-## 6. Architecture — 5 Layers Samjho
+## 6. Architecture — 5 Layers Explained
 
-Is project mein **5 distinct layers** hain. Har layer ki ek hi zimmedaari hai.
+This project has **5 distinct layers**. Each layer has a single responsibility.
 
 ```
 ┌─────────────────────────────────────────────┐
 │  Layer 5: Application Shell (App.jsx)       │
-│  Schema select karta hai, context deta hai  │
+│  Selects schema, provides context           │
 ├─────────────────────────────────────────────┤
 │  Layer 4: Renderer (Renderer.jsx)           │
-│  Schema → Render Engine → React ka bridge   │
+│  Bridge between Schema → Render Engine →    │
+│  React elements                             │
 ├─────────────────────────────────────────────┤
 │  Layer 3: Engine Layer                      │
 │  renderEngine.js — recursive tree walker    │
@@ -135,27 +137,27 @@ Is project mein **5 distinct layers** hain. Har layer ki ek hi zimmedaari hai.
 └─────────────────────────────────────────────┘
 ```
 
-### Layer 1: Foundation (Neev)
-- **schemaParser.js** — Raw JSON ko normalize karta hai. Har node ko `id`, `path`, `type`, `props`, `children` deta hai.
-- **validationUtils.js** — Pure validation functions. React se koi lena-dena nahi. Value, rules, aur label do — error ya null return karega.
-- **FormContext.jsx** — `useReducer` se form state manage karta hai (values, errors, touched, isSubmitting).
-- **useValidation.js** — Ek field ko form context se connect karta hai. `value`, `error`, `handleChange`, `handleBlur` return karta hai.
-- **useForm.js** — Convenience wrapper — full context + `isValid` derived value.
+### Layer 1: Foundation
+- **schemaParser.js** — Normalizes raw JSON. Assigns each node an `id`, `path`, `type`, `props`, and `children`.
+- **validationUtils.js** — Pure validation functions. Has nothing to do with React. Pass in a value, rules, and a label — it returns an error or null.
+- **FormContext.jsx** — Manages form state via `useReducer` (values, errors, touched, isSubmitting).
+- **useValidation.js** — Connects a single field to the form context. Returns `value`, `error`, `handleChange`, `handleBlur`.
+- **useForm.js** — Convenience wrapper — provides the full context plus a derived `isValid` value.
 
-### Layer 2: Component Layer (Components)
-- Har component (Input, Select, Checkbox, Textarea, Button, Form, Layout) ek **leaf renderer** hai.
-- Sab `React.memo` se wrapped hain — unnecessary re-renders nahi hote.
-- CSS Modules se styled hain — class name collisions nahi hote.
-- **componentRegistry.js** — type strings ko components se map karta hai. Ye poore system ka **extension point** hai.
+### Layer 2: Component Layer
+- Each component (Input, Select, Checkbox, Textarea, Button, Form, Layout) is a **leaf renderer**.
+- All are wrapped with `React.memo` — preventing unnecessary re-renders.
+- Styled with CSS Modules — no class name collisions.
+- **componentRegistry.js** — Maps type strings to components. This is the entire system's **extension point**.
 
-### Layer 3: Engine Layer (Dimag)
-- **conditionEngine.js** — `showIf`/`hideIf` conditions evaluate karta hai form values ke against.
-- **renderEngine.js** — Recursive tree walker. Har node ke liye: condition check karo → registry se component dhundho → children recursively process karo → `createElement` call karo.
+### Layer 3: Engine Layer
+- **conditionEngine.js** — Evaluates `showIf`/`hideIf` conditions against form values.
+- **renderEngine.js** — Recursive tree walker. For each node: check conditions → look up component in registry → recursively process children → call `createElement`.
 
 ### Layer 4: Renderer (Bridge)
-- `Renderer.jsx` — Thin React wrapper. Schema parse karta hai (memoized), form values padhta hai context se, `renderNode` call karta hai.
+- `Renderer.jsx` — A thin React wrapper. Parses the schema (memoized), reads form values from context, and calls `renderNode`.
 
-### Layer 5: Application Shell (App)
+### Layer 5: Application Shell
 - `App.jsx` — Tab bar, schema switching, `FormProvider` wrapping, submit handling, theme toggle.
 
 ---
@@ -165,14 +167,14 @@ Is project mein **5 distinct layers** hain. Har layer ki ek hi zimmedaari hai.
 ```
 src/
 ├── components/
-│   ├── Renderer/        # Core renderer component — schema ko React elements mein badalta hai
+│   ├── Renderer/        # Core renderer component — converts schema to React elements
 │   ├── Form/            # <form> wrapper — title, description, submit handling
-│   ├── Input/           # Text/email/password input — validation ke saath
-│   ├── Button/          # Submit/reset/action button — variants ke saath
+│   ├── Input/           # Text/email/password input — with validation
+│   ├── Button/          # Submit/reset/action button — with variants
 │   ├── Layout/          # Row/column/grid container — flexible layouts
-│   ├── Select/          # Dropdown select — string aur object options support
+│   ├── Select/          # Dropdown select — supports string and object options
 │   ├── Checkbox/        # Boolean toggle — checked/unchecked
-│   └── Textarea/        # Multiline text — rows configurable
+│   └── Textarea/        # Multiline text — configurable rows
 │
 ├── registry/
 │   └── componentRegistry.js   # Type → Component mapping (extension point)
@@ -194,11 +196,11 @@ src/
 │   └── schemaParser.js        # Raw JSON → normalized tree + field extraction
 │
 ├── config/
-│   └── exampleSchema.js       # Teen demo schemas (Contact, Password, Survey)
+│   └── exampleSchema.js       # Three demo schemas (Contact, Password, Survey)
 │
 ├── styles/
 │   ├── global.css             # Reset + CSS custom properties (theme variables)
-│   └── App.module.css         # App shell layout + theme toggle styles
+│   └── App.module.css         # App shell layout + responsive breakpoints
 │
 ├── App.jsx                    # Root: tab bar + schema switching + theme toggle
 └── main.jsx                   # Entry point: ThemeProvider + App mount
@@ -208,146 +210,146 @@ src/
 
 ## 8. Data Flow — Step by Step
 
-### A) Render Flow (JSON Schema → Screen pe Form)
+### A) Render Flow (JSON Schema → Form on Screen)
 
 ```
-1. App.jsx ek schema object select karta hai (tab click se)
+1. App.jsx selects a schema object (via tab click)
         │
-2. FormProvider schema receive karta hai
-   └─► extractFields() schema tree walk karta hai
-   └─► initialValues banata hai { firstName: "", lastName: "", ... }
-   └─► useReducer initialize karta hai is state ke saath
+2. FormProvider receives the schema
+   └─► extractFields() walks the schema tree
+   └─► Builds initialValues: { firstName: "", lastName: "", ... }
+   └─► Initializes useReducer with this state
         │
-3. Renderer raw schema receive karta hai
-   └─► parseSchema() normalize karta hai tree mein (ids/paths ke saath)
+3. Renderer receives the raw schema
+   └─► parseSchema() normalizes it into a tree (with ids/paths)
         │
-4. renderNode() root node pe call hota hai
+4. renderNode() is called on the root node
    │
-   ├─► shouldRender() check karta hai showIf/hideIf
-   │   └─► Agar false → null return (poora subtree skip)
+   ├─► shouldRender() checks showIf/hideIf
+   │   └─► If false → returns null (entire subtree skipped)
    │
-   ├─► componentRegistry[node.type] → React component resolve hota hai
+   ├─► componentRegistry[node.type] → resolves the React component
    │
-   ├─► Har child ke liye: recursively renderNode() call
+   ├─► For each child: recursively calls renderNode()
    │
    └─► createElement(Component, props, children)
         │
-5. React component tree mount karta hai
-   └─► Har field component useValidation(name) call karta hai
-       └─► FormContext se value/error padhta hai
-       └─► onChange/onBlur handlers return karta hai
+5. React mounts the component tree
+   └─► Each field component calls useValidation(name)
+       └─► Reads value/error from FormContext
+       └─► Returns onChange/onBlur handlers
 ```
 
-### B) Input Flow (User Type Kare → State Update)
+### B) Input Flow (User Types → State Update)
 
 ```
-1. User ek Input field mein type karta hai
+1. User types into an Input field
         │
-2. onChange fire hota hai → handleChange(event)
-   └─► event.target.value extract karta hai
-   └─► updateField(name, value) call karta hai
+2. onChange fires → handleChange(event)
+   └─► Extracts event.target.value
+   └─► Calls updateField(name, value)
         │
-3. FormContext reducer SET_VALUE handle karta hai
-   └─► formValues[name] = nayi value
+3. FormContext reducer handles SET_VALUE
+   └─► formValues[name] = new value
         │
-4. Agar field pehle se touched hai (blur ho chuka hai):
-   └─► validateField(name) validation rules run karta hai
-   └─► SET_ERROR ya CLEAR_ERROR dispatch karta hai
+4. If the field was previously touched (blurred):
+   └─► validateField(name) runs validation rules
+   └─► Dispatches SET_ERROR or CLEAR_ERROR
         │
-5. Context value change hota hai → Renderer re-render hota hai
-   └─► renderNode() naye formValues ke saath conditions re-evaluate karta hai
-   └─► Jis field ki value/error nahi badli → React.memo skip kar deta hai
+5. Context value changes → Renderer re-renders
+   └─► renderNode() re-evaluates conditions with new formValues
+   └─► Fields whose value/error didn't change → React.memo skips them
 ```
 
-### C) Submit Flow (Button Click → Data ya Errors)
+### C) Submit Flow (Button Click → Data or Errors)
 
 ```
-1. User Submit button click karta hai
+1. User clicks the Submit button
         │
-2. Button submitForm() call karta hai
+2. Button calls submitForm()
         │
-3. submitForm() validateForm(values, schemaChildren) call karta hai
-   └─► Schema ke har field node pe jaata hai
-   └─► Hidden fields skip karta hai (shouldRender check)
-   └─► validateField() har visible field pe run karta hai
-   └─► Saare errors ek object mein collect karta hai
+3. submitForm() calls validateForm(values, schemaChildren)
+   └─► Walks every field node in the schema
+   └─► Skips hidden fields (shouldRender check)
+   └─► Runs validateField() on every visible field
+   └─► Collects all errors into a single object
         │
-4. Agar errors hain:
-   └─► SET_ERRORS dispatch hota hai poore error map ke saath
-   └─► Fields apne errors dikhate hain
-   └─► Submit abort ho jaata hai
+4. If there are errors:
+   └─► Dispatches SET_ERRORS with the full error map
+   └─► Fields display their errors
+   └─► Submit is aborted
         │
-5. Agar koi error nahi:
-   └─► SET_SUBMITTING = true dispatch hota hai
-   └─► onSubmit(formValues) call hota hai
-   └─► SET_SUBMITTING = false dispatch hota hai
+5. If there are no errors:
+   └─► Dispatches SET_SUBMITTING = true
+   └─► Calls onSubmit(formValues)
+   └─► Dispatches SET_SUBMITTING = false
 ```
 
 ### D) Conditional Rendering Flow (showIf/hideIf)
 
 ```
-1. Schema node mein hai: showIf: { field: "isEmployed", equals: true }
+1. A schema node contains: showIf: { field: "isEmployed", equals: true }
         │
-2. renderNode() ke dauran shouldRender() call hota hai
+2. During renderNode(), shouldRender() is called
    └─► evaluateCondition({ field: "isEmployed", equals: true }, formValues)
-   └─► formValues["isEmployed"] === true check karta hai
+   └─► Checks formValues["isEmployed"] === true
         │
-3. Agar false → renderNode null return karta hai (component mount nahi hota)
-   Agar true  → component normally render hota hai
+3. If false → renderNode returns null (component is not mounted)
+   If true  → component renders normally
         │
-4. Jab user "isEmployed" checkbox toggle karta hai:
-   └─► formValues change hota hai
-   └─► Renderer poore tree pe renderNode() re-run karta hai
-   └─► Conditional field ab differently evaluate hota hai
-   └─► React component mount ya unmount karta hai
+4. When the user toggles the "isEmployed" checkbox:
+   └─► formValues changes
+   └─► Renderer re-runs renderNode() on the entire tree
+   └─► The conditional field now evaluates differently
+   └─► React mounts or unmounts the component accordingly
 ```
 
 ---
 
-## 9. Har File Ka Code Walkthrough
+## 9. Code Walkthrough for Every File
 
 ### `src/utils/schemaParser.js` — Schema Parser
 
-**Kya karta hai:** User ka likha hua raw JSON leta hai aur usko ek uniform internal structure mein convert karta hai.
+**What it does:** Takes the user's raw JSON and converts it into a uniform internal structure.
 
 **`normalizeNode(node, parentPath)`:**
-- Har node ko unique `id` deta hai (existing id use karta hai ya auto-generate karta hai)
-- `type` aur `children` alag karta hai, baaki sab `props` mein dalta hai
-- Recursively saare children normalize karta hai
-- Return: `{ id, path, type, props, children }`
+- Assigns each node a unique `id` (uses existing id or auto-generates one)
+- Separates `type` and `children`, puts everything else into `props`
+- Recursively normalizes all children
+- Returns: `{ id, path, type, props, children }`
 
-**Kyun normalize karte hain?** Raw schemas mein `children` missing ho sakta hai, shapes inconsistent ho sakti hain, IDs nahi hote. Renderer ko predictable structure chahiye. Normalization ek baar hoti hai (memoized).
+**Why normalize?** Raw schemas may have missing `children`, inconsistent shapes, or no IDs. The Renderer needs a predictable structure. Normalization happens once (memoized).
 
-**`extractFields(schema)`:** Normalized tree walk karta hai, har node jo `name` property rakhta hai use collect karta hai. FormContext use karta hai ye jaanne ke liye ki kaun kaun se fields hain aur initial values kya honi chahiye.
+**`extractFields(schema)`:** Walks the normalized tree and collects every node that has a `name` property. FormContext uses this to know which fields exist and what their initial values should be.
 
 ---
 
 ### `src/utils/validationUtils.js` — Validation Engine
 
-**Kya karta hai:** Pure-function validation. React se koi connection nahi.
+**What it does:** Pure-function validation. No connection to React.
 
 **Architecture:**
-- `PATTERN_MAP` — pattern names (email, url, phone) ko regex se map karta hai
-- `BUILT_IN_VALIDATORS` — rule names ko validator functions se map karta hai. Har function `true` (valid) ya `false` (invalid) return karta hai
-- `DEFAULT_MESSAGES` — rule names ko human-readable error messages se map karta hai
+- `PATTERN_MAP` — Maps pattern names (email, url, phone) to regular expressions
+- `BUILT_IN_VALIDATORS` — Maps rule names to validator functions. Each function returns `true` (valid) or `false` (invalid)
+- `DEFAULT_MESSAGES` — Maps rule names to human-readable error messages
 
 **`validateField(value, rules, label, allValues)`:**
-- Har rule iterate karta hai rules object mein
-- `BUILT_IN_VALIDATORS` mein validator dhundhta hai
-- Agar validation fail ho toh error message generate karta hai (custom agar diya hai, warna default)
-- Pehla error milte hi return (fail-fast) — ya null agar sab pass
+- Iterates through each rule in the rules object
+- Looks up the validator in `BUILT_IN_VALIDATORS`
+- If validation fails, generates an error message (custom if provided, otherwise default)
+- Returns on the first error (fail-fast) — or null if everything passes
 
 **`validateForm(values, schemaChildren)`:**
-- Schema recursively walk karta hai (nested layouts handle karta hai)
-- Hidden fields skip karta hai (`shouldRender` check)
-- Har visible field pe `validateField` call karta hai
-- Return: errors object `{ fieldName: "error message", ... }`
+- Recursively walks the schema (handles nested layouts)
+- Skips hidden fields (`shouldRender` check)
+- Calls `validateField` on every visible field
+- Returns: an errors object `{ fieldName: "error message", ... }`
 
 ---
 
 ### `src/context/FormContext.jsx` — Form State Management
 
-**Kya karta hai:** Centralized form state manage karta hai `useReducer` se.
+**What it does:** Manages centralized form state using `useReducer`.
 
 **State shape:**
 ```javascript
@@ -359,58 +361,58 @@ src/
 }
 ```
 
-**useReducer kyun, useState kyun nahi?** Form state mein multiple interdependent sub-values hain (values, errors, touched). Reducer saare transitions ek function mein consolidate karta hai — state updates predictable aur debuggable hote hain. Yehi reasoning Redux use karta hai, bas yahan component level pe apply hai.
+**Why useReducer instead of useState?** Form state has multiple interdependent sub-values (values, errors, touched). A reducer consolidates all transitions into a single function — making state updates predictable and debuggable. This is the same reasoning Redux uses, just applied at the component level here.
 
 **Action types:**
-- `SET_VALUE` — ek field ki value update karo
-- `SET_ERROR` / `CLEAR_ERROR` — ek field ka error set ya remove karo
-- `SET_ERRORS` — poora errors object replace karo (submit pe use hota hai)
-- `SET_TOUCHED` — field ko "interacted" mark karo
-- `RESET` — initial values pe wapas jao
-- `SET_SUBMITTING` — submitting flag toggle karo
+- `SET_VALUE` — Update a single field's value
+- `SET_ERROR` / `CLEAR_ERROR` — Set or remove a single field's error
+- `SET_ERRORS` — Replace the entire errors object (used on submit)
+- `SET_TOUCHED` — Mark a field as "interacted with"
+- `RESET` — Return to initial values
+- `SET_SUBMITTING` — Toggle the submitting flag
 
 ---
 
 ### `src/engine/conditionEngine.js` — Condition Engine
 
-**Kya karta hai:** Decide karta hai ki ek schema node render hona chahiye ya nahi.
+**What it does:** Determines whether a schema node should be rendered or not.
 
 **Supported operators:**
-- `{ field, equals }` — strict equality (===)
-- `{ field, notEquals }` — strict inequality (!==)
-- `{ field, includes }` — array membership check
-- `{ and: [...] }` — saari sub-conditions pass honi chahiye
-- `{ or: [...] }` — koi ek sub-condition pass honi chahiye
+- `{ field, equals }` — Strict equality (===)
+- `{ field, notEquals }` — Strict inequality (!==)
+- `{ field, includes }` — Array membership check
+- `{ and: [...] }` — All sub-conditions must pass
+- `{ or: [...] }` — At least one sub-condition must pass
 
-**Recursive composition:** AND/OR conditions kitni bhi depth tak nest ho sakti hain. Yehi approach database query builders (MongoDB, Elasticsearch) mein use hota hai.
+**Recursive composition:** AND/OR conditions can be nested to any depth. This is the same approach used in database query builders (MongoDB, Elasticsearch).
 
 ---
 
 ### `src/engine/renderEngine.js` — Render Engine
 
-**Kya karta hai:** Normalized schema tree ko React elements mein convert karta hai.
+**What it does:** Converts the normalized schema tree into React elements.
 
 **`renderNode(node, registry, formValues, createElement)`:**
 1. Null check
-2. `shouldRender()` call — agar false, null return (poora subtree skip)
-3. `registry[node.type]` se component lookup
-4. Agar nahi mila — dev mode mein warn karo, null return
-5. Children recursively process karo
-6. `createElement(Component, { key, ...props }, children)` call karo
+2. Calls `shouldRender()` — if false, returns null (entire subtree skipped)
+3. Looks up component via `registry[node.type]`
+4. If not found — warns in dev mode, returns null
+5. Recursively processes children
+6. Calls `createElement(Component, { key, ...props }, children)`
 
-**`createElement` inject kyun karte hain?** Render engine pure logic hai. React directly import nahi karta, toh testable JavaScript module rehta hai. Tests mein mock `createElement` pass kar sakte ho.
+**Why is `createElement` injected?** The render engine is pure logic. It doesn't import React directly, so it remains a testable JavaScript module. In tests, you can pass a mock `createElement` that records calls without needing a React environment.
 
 ---
 
 ### `src/registry/componentRegistry.js` — Component Registry
 
-**Kya karta hai:** Type strings ko React components se map karta hai.
+**What it does:** Maps type strings to React components.
 
 ```javascript
 {
-  form:     Form,       // "form" likhoge → <Form /> render hoga
-  input:    Input,      // "input" likhoge → <Input /> render hoga
-  select:   Select,     // "select" likhoge → <Select /> render hoga
+  form:     Form,       // "form" in schema → <Form /> is rendered
+  input:    Input,      // "input" in schema → <Input /> is rendered
+  select:   Select,     // "select" in schema → <Select /> is rendered
   checkbox: Checkbox,
   textarea: Textarea,
   button:   Button,
@@ -418,45 +420,45 @@ src/
 }
 ```
 
-**`registerComponent(type, component)`** — runtime pe naye types add kar sakte ho. Plugin architectures ke liye useful hai.
+**`registerComponent(type, component)`** — Add new types at runtime. Useful for plugin architectures.
 
-**Registry pattern kya hai?** Ye **inversion of control** hai. Renderer ko har component type ke baare mein jaanne ki zaroorat nahi — woh bas ek lookup table mein dhundhta hai. Yehi pattern Webpack loaders, VS Code extensions, aur Angular dependency injection mein use hota hai.
+**What is the Registry pattern?** This is **Inversion of Control** — the Renderer doesn't need to know about every component type. It just looks them up in a table. The benefit is that adding new components doesn't require touching the engine code (Open/Closed Principle). This same pattern is used in Webpack loaders, VS Code extensions, and Angular dependency injection.
 
 ---
 
 ### `src/components/Renderer/Renderer.jsx`
 
-**Kya karta hai:** React component jo rendering orchestrate karta hai.
+**What it does:** The React component that orchestrates rendering.
 
-**Teen memoized steps:**
-1. `useMemo(() => parseSchema(schema), [schema])` — ek baar normalize karo
-2. `useMemo(() => merge registries, [registry])` — overrides allow karo
-3. `useMemo(() => renderNode(...), [schema, registry, formValues])` — jab form values change hon tab re-render (conditional rendering ke liye zaroori)
+**Three memoized steps:**
+1. `useMemo(() => parseSchema(schema), [schema])` — Normalize once
+2. `useMemo(() => merge registries, [registry])` — Allow overrides
+3. `useMemo(() => renderNode(...), [schema, registry, formValues])` — Re-render when form values change (necessary for conditional rendering)
 
 ---
 
 ### Component Files (Input, Select, Checkbox, Textarea, Button, Form, Layout)
 
-Sab ek hi pattern follow karte hain:
-1. `useValidation` import (field components) ya `useFormContext` (Form, Button)
-2. Schema props destructure
-3. Hook se form state connect
-4. HTML element render with proper attributes
-5. Error messages conditionally show
-6. `React.memo` mein wrap
+All follow the same pattern:
+1. Import `useValidation` (field components) or `useFormContext` (Form, Button)
+2. Destructure schema props
+3. Connect to form state via hooks
+4. Render HTML elements with proper attributes
+5. Conditionally show error messages
+6. Wrap in `React.memo`
 
 ---
 
-## 10. Teen Demo Schemas Samjho
+## 10. Three Demo Schemas Explained
 
 ### Schema 1: Contact Form
 **Demonstrates:** Multiple input types, nested row layouts, conditional rendering, rich validation.
 
-- First Name + Last Name → `layout` mein `direction: 'row'` (side by side)
+- First Name + Last Name → Inside a `layout` with `direction: 'row'` (side by side)
 - Email → `pattern: 'email'` validation
-- Phone → optional, `pattern: 'phone'`
-- Role dropdown → agar "Other" select karo → "Specify Your Role" field dikhta hai (`showIf`)
-- Employed checkbox → check karo → "Company Name" dikhta hai (`showIf`)
+- Phone → Optional, `pattern: 'phone'`
+- Role dropdown → If "Other" is selected → "Specify Your Role" field appears (`showIf`)
+- Employed checkbox → If checked → "Company Name" field appears (`showIf`)
 - Bio textarea → `maxLength: 300`
 - Register + Reset buttons
 
@@ -471,26 +473,26 @@ Sab ek hi pattern follow karte hain:
 **Demonstrates:** Grid layout, complex nested AND/OR conditions.
 
 - Primary Language + Experience Level → `direction: 'grid', columns: 2` (2-column grid)
-- Preferred Framework → `showIf: { or: [JS, TS] }` — sirf JS/TS pe dikhta hai
-- State Library checkbox → same OR condition
-- "Which state library?" → `showIf: { and: [checkbox true, { or: [JS, TS] }] }` — dono conditions true honi chahiye
+- Preferred Framework → `showIf: { or: [JS, TS] }` — only visible when JS or TS is selected
+- State Library checkbox → Same OR condition
+- "Which state library?" → `showIf: { and: [checkbox true, { or: [JS, TS] }] }` — both conditions must be true
 - Comments → `maxLength: 500`
 
 ---
 
 ## 11. Theme System (Light/Dark Mode)
 
-### Kaise kaam karta hai?
+### How does it work?
 
-1. **CSS Custom Properties** — `global.css` mein `:root` (light) aur `[data-theme="dark"]` (dark) ke under 30+ CSS variables define hain. Saare components in variables ko use karte hain.
+1. **CSS Custom Properties** — `global.css` defines 30+ CSS variables under `:root` (light) and `[data-theme="dark"]` (dark). All components use these variables.
 
-2. **ThemeContext** — `ThemeContext.jsx` mein theme state manage hota hai. `data-theme` attribute `<html>` element pe set hota hai. localStorage mein persist hota hai.
+2. **ThemeContext** — `ThemeContext.jsx` manages the theme state. The `data-theme` attribute is set on the `<html>` element. The choice is persisted in localStorage.
 
-3. **System Preference Detection** — Pehli baar visit pe `prefers-color-scheme: dark` check hota hai. Agar user ka system dark mode pe hai toh automatically dark mode use hota hai.
+3. **System Preference Detection** — On the first visit, `prefers-color-scheme: dark` is checked. If the user's system is in dark mode, dark mode is automatically applied.
 
-4. **Toggle Button** — Tab bar ke bagal mein sun/moon button hai. Click karne pe light ↔ dark switch hota hai.
+4. **Toggle Button** — A sun/moon button sits next to the tab bar. Clicking it switches between light and dark modes.
 
-### Theme variables ka concept:
+### Theme variables concept:
 ```css
 /* Light mode (default) */
 :root {
@@ -509,31 +511,31 @@ Sab ek hi pattern follow karte hain:
 }
 ```
 
-Saare components `var(--color-bg)` jaise variables use karte hain. Jab `data-theme` attribute change hota hai, saare colors ek saath switch ho jaate hain.
+All components use variables like `var(--color-bg)`. When the `data-theme` attribute changes, all colors switch simultaneously.
 
 ---
 
 ## 12. Performance Optimizations
 
-- **React.memo** har leaf component pe — jab parent form state change hota hai but kisi specific field ki value/error nahi badli, toh woh field re-render nahi hota.
-- **useMemo** schema parsing pe — raw schema ek baar normalize hota hai aur cache rehta hai jab tak schema reference change na ho.
-- **useCallback** event handlers pe — closures har render pe re-create nahi hoti, jo `React.memo` ko defeat kar deti.
-- **queueMicrotask** — validation ko next microtask mein defer karta hai taaki state update batching clean rahe.
+- **React.memo** on every leaf component — When the parent form state changes but a specific field's value/error hasn't changed, that field doesn't re-render.
+- **useMemo** on schema parsing — The raw schema is normalized once and cached until the schema reference changes.
+- **useCallback** on event handlers — Closures aren't recreated on every render, which would defeat `React.memo`.
+- **queueMicrotask** — Defers validation to the next microtask so that state update batching stays clean.
 
 ---
 
-## 13. Kaise Extend Karein?
+## 13. How to Extend?
 
-### Naya Component Type Add Karo (e.g., DatePicker)
+### Add a New Component Type (e.g., DatePicker)
 
 ```
-Step 1: src/components/DatePicker/DatePicker.jsx banao
-Step 2: src/registry/componentRegistry.js mein import karo
-Step 3: Registry mein add karo: datepicker: DatePicker
-Step 4: Schema mein use karo: { type: "datepicker", name: "dob", label: "Date of Birth" }
+Step 1: Create src/components/DatePicker/DatePicker.jsx
+Step 2: Import it in src/registry/componentRegistry.js
+Step 3: Add it to the registry: datepicker: DatePicker
+Step 4: Use it in a schema: { type: "datepicker", name: "dob", label: "Date of Birth" }
 ```
 
-Engine ka code touch karne ki zaroorat nahi.
+No engine code needs to be touched.
 
 ### Server-Driven Schemas
 
@@ -552,7 +554,7 @@ return <FormProvider schema={schema}><Renderer schema={schema} /></FormProvider>
 
 ### Visual Schema Editor
 
-Drag-and-drop interface banao jo schema JSON produce kare. Same Renderer mein feed karo. Yehi Retool, Typeform, aur JotForm internally karte hain.
+Build a drag-and-drop interface that produces schema JSON. Feed it into the same Renderer. This is what Retool, Typeform, and JotForm do internally.
 
 ### Field-Level Permissions
 
@@ -564,132 +566,133 @@ Drag-and-drop interface banao jo schema JSON produce kare. Same Renderer mein fe
   showIf: { field: "$userRole", equals: "admin" }
 }
 ```
-Auth context se `$userRole` inject karo form values mein.
+
+Inject `$userRole` from an auth context into form values.
 
 ---
 
 ## 14. Interview Questions & Answers
 
-### Q1: Config-Driven UI kya hota hai? Ek line mein batao.
+### Q1: What is Config-Driven UI? Explain in one line.
 
-**A:** Ek architecture pattern jahan UI hardcode nahi hoti — ek JSON schema describe karta hai ki kya dikhana hai, aur ek rendering engine us schema ko padhke actual components produce karta hai.
-
----
-
-### Q2: Formik ya React Hook Form se ye alag kaise hai?
-
-**A:** Woh libraries form **state** manage karti hain (values, errors, validation), lekin aapko JSX toh khud likhna padta hai har field ke liye. Is project mein **JSX bhi data se generate hoti hai** — schema mein `type: "input"` likho, engine `<Input />` component khud bana deta hai. Practice mein aap React Hook Form ko state layer ke liye use kar sakte ho aur upar se schema renderer bana sakte ho.
+**A:** An architecture pattern where the UI is not hardcoded — a JSON schema describes what to display, and a rendering engine reads that schema to produce actual components.
 
 ---
 
-### Q3: Registry pattern kya hai aur kyun use kiya?
+### Q2: How is this different from Formik or React Hook Form?
 
-**A:** Registry ek **lookup table** hai — type strings ko React components se map karti hai. Ye **Inversion of Control** hai — render engine ko har component ke baare mein jaanne ki zaroorat nahi. Sirf registry mein dhundhta hai. Iska fayda ye hai ki naye components add karne ke liye engine code touch nahi karna padta (Open/Closed Principle). Yehi pattern Webpack loaders, VS Code extensions, aur Angular DI mein use hota hai.
-
----
-
-### Q4: useReducer kyun use kiya useState ki jagah?
-
-**A:** Form state mein multiple interdependent values hain — `formValues`, `errors`, `touched`, `isSubmitting`. Agar `useState` use karte toh 4 alag states hote, unke beech coordination mushkil hota. `useReducer` saare transitions ek reducer function mein centralize karta hai — har state change explicit aur predictable hai. Debugging bhi aasan hai kyunki har action ka type aur payload clear hai.
+**A:** Those libraries manage form **state** (values, errors, validation), but you still have to write JSX manually for each field. In this project, **the JSX itself is generated from data** — write `type: "input"` in a schema, and the engine produces the `<Input />` component automatically. In practice, you could use React Hook Form as the state layer and build a schema renderer on top of it.
 
 ---
 
-### Q5: Conditional rendering kaise kaam karti hai? Nested AND/OR explain karo.
+### Q3: What is the Registry pattern and why was it used?
 
-**A:** Har schema node pe `showIf` ya `hideIf` property ho sakti hai. Render engine har node render karne se pehle `shouldRender()` call karta hai, jo `conditionEngine.js` mein hai.
+**A:** A registry is a **lookup table** — it maps type strings to React components. This is **Inversion of Control** — the render engine doesn't need to know about every component type. It simply looks them up in the table. The benefit is that adding new components doesn't require touching the engine code (Open/Closed Principle). This same pattern is used in Webpack loaders, VS Code extensions, and Angular dependency injection.
 
-Condition Engine recursively evaluate karta hai:
+---
+
+### Q4: Why was useReducer used instead of useState?
+
+**A:** Form state has multiple interdependent values — `formValues`, `errors`, `touched`, `isSubmitting`. With `useState`, there would be 4 separate state variables, and coordinating between them would be difficult. `useReducer` centralizes all transitions into a single reducer function — every state change is explicit and predictable. Debugging is also easier because every action has a clear type and payload.
+
+---
+
+### Q5: How does conditional rendering work? Explain nested AND/OR.
+
+**A:** Any schema node can have a `showIf` or `hideIf` property. Before rendering each node, the render engine calls `shouldRender()`, which lives in `conditionEngine.js`.
+
+The Condition Engine evaluates recursively:
 - Simple: `{ field: "role", equals: "admin" }` → `formValues.role === "admin"`
-- AND: `{ and: [cond1, cond2] }` → dono pass honi chahiye
-- OR: `{ or: [cond1, cond2] }` → koi ek pass ho
-- Nested: AND ke andar OR, OR ke andar AND — kitni bhi depth
+- AND: `{ and: [cond1, cond2] }` → Both must pass
+- OR: `{ or: [cond1, cond2] }` → At least one must pass
+- Nested: AND inside OR, OR inside AND — to any depth
 
-Jab form values change hote hain, Renderer re-run hota hai, conditions re-evaluate hoti hain, aur React accordingly components mount/unmount karta hai.
-
----
-
-### Q6: 100+ fields wale form mein performance kaise handle karoge?
-
-**A:** Teen strategies:
-1. **Virtualization** — Sirf visible fields render karo (react-window ya react-virtualized). Scroll pe naye fields mount hon.
-2. **Sectioned rendering** — Schema ko pages/tabs mein tod do. Sirf active section mount karo.
-3. **Field-level subscriptions** — Ek global context ki jagah pub/sub model use karo jahan har field sirf apni value subscribe kare. React Hook Form refs ke saath ye approach use karta hai.
+When form values change, the Renderer re-runs, conditions are re-evaluated, and React accordingly mounts or unmounts components.
 
 ---
 
-### Q7: TypeScript add karte toh kaise karte?
+### Q6: How would you handle performance with 100+ fields?
 
-**A:** `SchemaNode` ke liye discriminated union type define karte — har variant ek component type se correspond karta. Registry ko type karte as `Record<string, React.ComponentType<any>>`. Validation rules ke liye typed interface. Render engine ka return type `React.ReactElement | null`. Schemas ko compile-time pe validate kar sakte — galat type likha toh TypeScript error de.
+**A:** Three strategies:
+1. **Virtualization** — Only render visible fields (react-window or react-virtualized). New fields mount on scroll.
+2. **Sectioned rendering** — Split the schema into pages/tabs. Only mount the active section.
+3. **Field-level subscriptions** — Instead of a single global context, use a pub/sub model where each field subscribes only to its own value. React Hook Form uses this approach with refs.
 
 ---
 
-### Q8: Is approach ke tradeoffs kya hain?
+### Q7: How would you add TypeScript?
+
+**A:** Define a discriminated union type for `SchemaNode` — each variant corresponds to a component type. Type the registry as `Record<string, React.ComponentType<any>>`. Create a typed interface for validation rules. Set the render engine's return type as `React.ReactElement | null`. Schemas can then be validated at compile-time — write an incorrect type and TypeScript gives an error.
+
+---
+
+### Q8: What are the tradeoffs of this approach?
 
 **A:**
 **Pros:**
-- Extensibility — naye components easily add hote hain
-- Consistency — sab forms same renderer use karte hain
-- Server-driven capability — backend se UI change ho sakta hai
-- Cross-platform potential — same schema, different renderers
+- Extensibility — New components are easily added
+- Consistency — All forms use the same renderer
+- Server-driven capability — Backend can change the UI without frontend redeployment
+- Cross-platform potential — Same schema, different renderers
 
 **Cons:**
-- Debugging harder hai — aap data debug karte ho, code nahi
-- Schema format ek "language" ban jaati hai jise maintain karna padta hai
-- Upfront investment — engine banana time-consuming hai
-- Simple apps ke liye overkill — agar sirf ek contact form hai toh directly JSX likhna better hai
+- Debugging is harder — You debug data, not code
+- The schema format becomes a "language" that must be maintained
+- Upfront investment — Building the engine is time-consuming
+- Overkill for simple apps — If you only have one contact form, writing JSX directly is better
 
-**Tradeoff kab worth hai:** Jab aapke system mein bahut saare forms hain (10+), backend-driven UI chahiye, ya multiple platforms pe same forms render karne hain.
+**When the tradeoff is worth it:** When your system has many forms (10+), needs backend-driven UI, or needs to render the same forms across multiple platforms.
 
 ---
 
-### Q9: Testing kaise karoge is system ki?
+### Q9: How would you test this system?
 
 **A:**
-- **Unit tests** — `validateField`, `evaluateCondition`, `normalizeNode` pure functions hain. Jest se test karo.
-- **Integration tests** — React Testing Library se schema render karo, user input simulate karo, form state assert karo.
-- **Schema validation** — JSON Schema ya Zod se schemas validate karo renderer tak pahunchne se pehle.
-- **Visual regression** — Rendered forms ka snapshot test karo unintended style changes pakadne ke liye.
+- **Unit tests** — `validateField`, `evaluateCondition`, `normalizeNode` are pure functions. Test them with Jest.
+- **Integration tests** — Use React Testing Library to render a schema, simulate user input, and assert form state.
+- **Schema validation** — Validate schemas with JSON Schema or Zod before they reach the renderer.
+- **Visual regression** — Snapshot test rendered forms to catch unintended style changes.
 
 ---
 
-### Q10: `createElement` inject kyun karte ho render engine mein?
+### Q10: Why is `createElement` injected into the render engine?
 
-**A:** Render engine pure JavaScript logic hai. React directly import nahi karta. Iska fayda:
-- **Testability** — tests mein mock `createElement` pass kar sakte ho jo calls record kare bina React environment ke
-- **Portability** — theoretically kisi aur framework ka `createElement` bhi pass kar sakte ho
-- **Separation of concerns** — engine ko React ke baare mein kuch nahi pata, woh bas tree walk karta hai
-
----
-
-### Q11: Hidden fields ki validation ka bug kya tha aur kaise fix kiya?
-
-**A:** `validateForm` saare fields validate kar raha tha — including jo `showIf` condition ki wajah se screen pe dikhte hi nahi the. Jaise `otherRole` field pe `required: true` tha, but woh sirf `role === 'other'` pe dikhta tha. Agar user ne "Other" select nahi kiya, field hidden tha, but validation fail ho rahi thi silently — form submit nahi ho raha tha, error bhi nahi dikh raha tha.
-
-Fix: `validateForm` mein `shouldRender()` check add kiya — agar field hidden hai toh uski validation skip karo. Saath hi `allValues` parameter pass kiya `validateField` ko taaki cross-field `match` validation bhi kaam kare.
+**A:** The render engine is pure JavaScript logic. It doesn't import React directly. The benefits:
+- **Testability** — Tests can pass a mock `createElement` that records calls without needing a React environment
+- **Portability** — Theoretically, another framework's `createElement` could be passed instead
+- **Separation of concerns** — The engine knows nothing about React; it just walks a tree
 
 ---
 
-### Q12: Theme system kaise implement kiya?
+### Q11: What was the hidden field validation bug and how was it fixed?
 
-**A:** CSS Custom Properties approach use kiya:
-1. `:root` mein light theme colors define kiye
-2. `[data-theme="dark"]` mein dark theme colors define kiye
-3. Saare component CSS files mein hardcoded colors replace kiye `var(--color-xyz)` se
-4. `ThemeContext` banaya jo `data-theme` attribute toggle karta hai `<html>` pe
-5. `localStorage` mein choice persist hoti hai
-6. Pehli visit pe `prefers-color-scheme` media query se system preference detect hoti hai
+**A:** `validateForm` was validating all fields — including those that weren't visible on screen due to `showIf` conditions. For example, the `otherRole` field had `required: true`, but it was only visible when `role === 'other'`. If the user didn't select "Other", the field was hidden, but validation was still failing silently — the form wouldn't submit, and no error was visible.
+
+Fix: Added a `shouldRender()` check inside `validateForm` — if a field is hidden, its validation is skipped. Additionally, the `allValues` parameter was passed to `validateField` so that cross-field `match` validation also works correctly.
 
 ---
 
-## 15. Real-World Mein Kahan Use Hota Hai?
+### Q12: How was the theme system implemented?
 
-| Company / Product | Kaise Use Karte Hain |
+**A:** Using a CSS Custom Properties approach:
+1. Defined light theme colors in `:root`
+2. Defined dark theme colors in `[data-theme="dark"]`
+3. Replaced all hardcoded colors in component CSS files with `var(--color-xyz)`
+4. Created `ThemeContext` which toggles the `data-theme` attribute on the `<html>` element
+5. The choice persists in `localStorage`
+6. On first visit, the `prefers-color-scheme` media query detects the system preference
+
+---
+
+## 15. Where Is This Used in the Real World?
+
+| Company / Product | How They Use It |
 |---|---|
-| **Shopify** | Store themes aur checkout flows schema-driven hain. Merchants JSON-like schemas se storefront configure karte hain. |
-| **Salesforce Lightning** | Poora Lightning platform metadata-driven components use karta hai. Admins schemas configure karke pages banate hain, code nahi likhte. |
-| **Retool / Appsmith** | Low-code platforms jahan users drag-and-drop se components configure karte hain jo configuration objects ke roop mein store hote hain aur dynamically render hote hain. |
-| **Google Forms** | Har form ek schema hai (question type, options, validation rules). Renderer schema walk karke form produce karta hai. |
-| **Enterprise Admin Panels** | Amazon, Meta, Stripe jaise companies internal tools mein schema-driven table/form builders use karti hain taaki backend engineers bina frontend code likhe admin UIs define kar sakein. |
+| **Shopify** | Store themes and checkout flows are schema-driven. Merchants configure their storefront using JSON-like schemas. |
+| **Salesforce Lightning** | The entire Lightning platform uses metadata-driven components. Admins configure pages by setting up schemas, without writing code. |
+| **Retool / Appsmith** | Low-code platforms where users drag-and-drop to configure components, which are stored as configuration objects and dynamically rendered. |
+| **Google Forms** | Every form is a schema (question type, options, validation rules). The renderer walks the schema and produces the form. |
+| **Enterprise Admin Panels** | Companies like Amazon, Meta, and Stripe use schema-driven table/form builders in internal tools so backend engineers can define admin UIs without writing frontend code. |
 
 ---
 
