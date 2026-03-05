@@ -1,0 +1,122 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.tabBar {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--color-tab-bg);
+  border-radius: 12px;
+}
+
+.tab {
+  padding: 8px 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-text-subtle);
+  transition: background 0.2s, color 0.2s;
+}
+
+.tab:hover {
+  background: var(--color-surface-hover);
+}
+
+.tabActive {
+  background: var(--color-surface);
+  color: var(--color-accent);
+  box-shadow: 0 1px 3px var(--color-tab-active-shadow);
+}
+
+.card {
+  width: 100%;
+  max-width: 640px;
+  background: var(--color-surface);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow:
+    0 1px 3px var(--color-card-shadow-1),
+    0 8px 24px var(--color-card-shadow-2);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.output {
+  width: 100%;
+  max-width: 640px;
+  margin-top: 24px;
+}
+
+.outputTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.outputPre {
+  background: var(--color-code-bg);
+  color: var(--color-code-text);
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 0.8125rem;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  overflow-x: auto;
+  line-height: 1.7;
+}
+
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.themeToggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}

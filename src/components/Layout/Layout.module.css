@@ -1,0 +1,25 @@
+.layout {
+  display: flex;
+  width: 100%;
+}
+
+.row {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+}
+
+.gap4 { gap: 4px; }
+.gap8 { gap: 8px; }
+.gap12 { gap: 12px; }
+.gap16 { gap: 16px; }
+.gap24 { gap: 24px; }
+.gap32 { gap: 32px; }

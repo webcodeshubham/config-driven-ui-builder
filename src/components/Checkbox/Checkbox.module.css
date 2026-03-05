@@ -1,0 +1,32 @@
+.field {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
+}
+
+.label {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.error {
+  font-size: 0.8125rem;
+  color: var(--color-error);
+  margin-top: 2px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
